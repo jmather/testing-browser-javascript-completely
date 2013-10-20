@@ -1,20 +1,38 @@
 # Testing JavaScript Completely
 
-Testing JavaScript is hard. Not any one thing in partiular, but building an entire testing ecosystem
-that plays well with itself and fullfills all the requirements of a modern, robust testing configuration
-is an immense undertaking. We have been there. We have trialed and errored. We have backtracked. We have
+Testing JavaScript is hard. Not any one thing in particular, but building an entire testing ecosystem
+that plays well with itself and fulfills all the requirements of a modern, robust testing configuration
+is an immense undertaking. We have been there. We have trialed and erred. We have backtracked. We have
 hit many more dead ends than I care to talk about.
 
 All of that work has led us here.
 
 ## Features
 
-* Mocha, Chai, and Expect based testing framework.
-* RequireJS backed dependency system.
-* PhantomJS AND in-browser testing.
+* [Mocha][mocha_site], [Chai][chai_site], and [Expect][expect_site] based testing framework.
+* [RequireJS][requirejs_site] backed dependency system.
+* [PhantomJS][phantomjs_site] AND in-browser testing.
 * Ability to run full test suite or just one file.
-* Code coverage powered by Istanbul.
-* build.xml for getting started with Jenkins.
+* Code coverage powered by [Istanbul][istanbul_site].
+* build.xml for getting started with [Jenkins][jenkins_site].
 * Sample Jenkins config.xml for metrics configuration.
 
+## Grunt Commands
 
+* `grunt test`
+ - Run all unit tests
+* `grunt test:browser`
+ - Run all unit tests in your preferred browser
+* `grunt test:coverage`
+ - Run code coverage
+
+ Now `test` and `test:browser` also have an optional argument `--file` which can be passed a single file.
+ This is quite helpful if you are just trying to finish up a single unit test.
+
+[mocha_site]: http://visionmedia.github.io/mocha/
+[chai_site]: http://chaijs.com/
+[expect_site]: https://github.com/LearnBoost/expect.js/
+[requirejs_site]: http://requirejs.org/
+[phantomjs_site]: http://phantomjs.org/
+[istanbul_site]: http://gotwarlost.github.io/istanbul/
+[jenkins_site]: http://jenkins-ci.org/
