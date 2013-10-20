@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project name="Test" default="build">
+    <property name="output" location="${basedir}/build/"/>
+
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="${output}/coverage"/>
+        <delete dir="${output}/logs"/>
+    </target>
+
+    <target name="prepare" depends="clean" description="Prepare for build">
+        <mkdir dir="${output}/coverage"/>
+        <mkdir dir="${output}/logs/"/>
+        <exec executable="npm" failonerror="true">
+            <arg value="install" />
+        </exec>
+        <exec executable="node_modules/.bin/bower" failonerror="true">
+            <arg value="install" />
+        </exec>
+    </target>
+
+    <target name="test" depends="clean, prepare, test-unit, test-coverage">
+
+    </target>
+
+    <target name="test-unit" description="Perform unit tests for continuous integration">
+        <exec executable="node_modules/grunt-cli/bin/grunt" failonerror="true">
+            <arg value="test:ci" />
+        </exec>
+    </target>
+
+    <target name="test-coverage" description="Perform unit tests code coverage for continuous integration">
+        <exec executable="scripts/support/run-coverage-test.sh">
+            <arg value="-ci" />
+        </exec>
+    </target>
+</project>

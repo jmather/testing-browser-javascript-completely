@@ -1,0 +1,7 @@
+atlassian-ide-plugin.xml
+*.iml
+app/vendor/
+node_modules/
+build/
+coverage/
+test/test_file_list.js

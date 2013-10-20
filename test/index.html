@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Test Runner</title>
+        <link rel="stylesheet" href="vendor/mocha/mocha.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <script src="vendor/mocha/mocha.js" type="text/javascript" charset="utf-8"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/chai/chai.js"></script>
+        <script src="vendor/sinon/lib/sinon.js"></script>
+        <script src="vendor/sinon/lib/sinon/match.js"></script>
+        <script src="vendor/sinon/lib/sinon/spy.js"></script>
+        <script src="vendor/sinon/lib/sinon/call.js"></script>
+        <script src="vendor/sinon/lib/sinon/stub.js"></script>
+        <script src="vendor/sinon/lib/sinon/mock.js"></script>
+        <script src="vendor/sinon/lib/sinon/assert.js"></script>
+        <script src="vendor/sinon/lib/sinon/util/event.js"></script>
+        <script src="vendor/sinon/lib/sinon/util/fake_xml_http_request.js"></script>
+        <script src="vendor/sinon/lib/sinon/util/fake_timers.js"></script>
+        <script src="vendor/sinon/lib/sinon/util/xhr_ie.js"></script>
+        <script src="vendor/sinon/lib/sinon/util/timers_ie.js"></script>
+        <script src="vendor/sinon/lib/sinon/util/fake_server.js"></script>
+        <script src="vendor/sinon/lib/sinon/util/fake_server_with_clock.js"></script>
+        <script src="vendor/sinon/lib/sinon/collection.js"></script>
+        <script src="vendor/sinon/lib/sinon/sandbox.js"></script>
+        <script src="vendor/sinon/lib/sinon/test.js"></script>
+        <script src="vendor/sinon/lib/sinon/test_case.js"></script>
+        <script src="vendor/sinon-chai/lib/sinon-chai.js"></script>
+        <script data-main="scripts/require.config.js" src="vendor/requirejs/require.js" type="text/javascript" charset="utf-8"></script>
+        <script src="test_file_list.js" type="text/javascript" charset="utf-8"></script>
+
+        <script type="text/javascript" charset="utf-8">
+            console = window.console || function() {};
+            mocha.setup('bdd');
+            var expect = chai.expect;
+            var _sinon = sinon;
+
+            function runMocha() {
+                if (window.mochaPhantomJS) {
+                    if (window.__coverage__ !== undefined) {
+                        after(function() {
+                            $.ajax('http://localhost:9003/', {
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify(__coverage__)
+                            });
+                        });
+                    }
+                    mochaPhantomJS.run()
+                } else {
+                    mocha.run()
+                }
+            }
+
+            require([], function() {
+                if(typeof testFiles == 'undefined')  {
+                    console.log('No test files found.  Please use `grunt unittest`.  If including a file, make sure the path is correct.');
+                    return;
+                }
+
+                require(testFiles || [], runMocha);
+            });
+        </script>
+    </head>
+    <body>
+        <div id="mocha"></div>
+    </body>
+</html>
