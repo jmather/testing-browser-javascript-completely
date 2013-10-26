@@ -37,15 +37,13 @@
 
             function runMocha() {
                 if (window.mochaPhantomJS) {
-                    if (window.__coverage__ !== undefined) {
-                        after(function() {
-                            $.ajax('http://localhost:9003/', {
-                                type: 'POST',
-                                contentType: 'application/json',
-                                data: JSON.stringify(__coverage__)
-                            });
-                        });
-                    }
+                    after(function(done) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', '/', false);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        xhr.send(JSON.stringify(window.__coverage__));
+                        done();
+                    });
                     mochaPhantomJS.run()
                 } else {
                     mocha.run()
