@@ -106,9 +106,10 @@ module.exports = function (grunt) {
                                     if (err) {
                                         console.log(err);
                                     } else {
-                                        console.log('saved!');
+                                        console.log('Code coverage information exported!');
                                     }
                                 });
+                                res.write('{\'status\': \'success\'}');
                                 res.writeHead(200, { 'Content-Type': 'application/json' });
                                 res.end();
                             }
