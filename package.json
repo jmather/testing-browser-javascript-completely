@@ -1,4 +1,20 @@
 {
+  "title": "Testing browser JavaScript completely",
+  "description": "Basic configuration for unit testing browser based JavaScript",
+  "version": "1.1.0",
+  "homepage": "https://github.com/jmather/testing-browser-javascript-completely",
+  "bugs": {
+    "url": "https://github.com/jmather/testing-browser-javascript-completely/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jacob Mather",
+    "url": "http://jmather.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmather/testing-browser-javascript-completely.git"
+  },
   "devDependencies": {
     "grunt-cli": "~0.1.6",
     "grunt-contrib-connect": "~0.4.1",
@@ -10,5 +26,8 @@
   },
   "engines": {
     "node": ">=0.8.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.0"
   }
 }
