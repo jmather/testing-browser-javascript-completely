@@ -54,7 +54,7 @@ To run one unit test in the browser:
 
     grunt test:browser --file test/unit/file.test.js
 
-[mocha_site]: http://visionmedia.github.io/mocha/
+[mocha_site]: http://mochajs.org/
 [chai_site]: http://chaijs.com/
 [expect_site]: https://github.com/LearnBoost/expect.js/
 [requirejs_site]: http://requirejs.org/
